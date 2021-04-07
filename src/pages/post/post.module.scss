@@ -1,0 +1,132 @@
+// TODO
+.container {
+  width: 100vw;
+
+  p,
+  time,
+  ul {
+    font-size: 1.125rem;
+    line-height: 140%;
+    margin: 0;
+
+    color: var(--gray-300);
+
+    // svg {
+    //   font-size: 1.25rem;
+    // }
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.postContainer {
+  max-width: 720px;
+  margin: 5rem auto;
+  padding: 0 1.25rem;
+
+  header {
+    strong {
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 3.6rem;
+      letter-spacing: -0.5px;
+    }
+
+    div {
+      margin: 1.5rem 0 1.1rem;
+    }
+
+    small {
+      display: block;
+      margin-bottom: 4.1rem;
+
+      font-size: 0.875rem;
+      font-style: italic;
+      line-height: 1rem;
+
+      color: var(--gray-300);
+    }
+  }
+
+  .postBody {
+    max-width: 100%;
+
+    p + p {
+      margin-top: 1.8rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      line-height: 2rem;
+      letter-spacing: -0.5px;
+    }
+
+    div {
+      width: 100%;
+      margin: 3.8rem 0;
+      text-align: justify;
+
+      ul,
+      li {
+        margin: 1.8rem 0;
+        text-align: justify;
+      }
+
+      a {
+        color: var(--pink-500);
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      strong {
+        color: var(--gray-100);
+      }
+    }
+  }
+}
+
+.commentSession {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+
+  div {
+    height: 1px;
+    width: 100%;
+
+    background-color: var(--gray-200);
+    opacity: 0.1;
+    margin-bottom: 3rem;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.2rem;
+      letter-spacing: -0.5;
+
+      color: var(--pink-500);
+      transition: filter 0.2 ease-in-out;
+
+      &:hover {
+        filter: brightness(0.9);
+      }
+
+      p {
+        font-size: 1.125rem;
+        line-height: 1.3rem;
+        font-weight: normal;
+        color: var(--gray-100);
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}

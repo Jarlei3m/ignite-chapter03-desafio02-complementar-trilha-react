@@ -1,0 +1,24 @@
+.postInfo {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 1.9rem;
+
+  time:first-child {
+    text-transform: capitalize;
+  }
+
+  p,
+  time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+
+    color: var(--gray-300);
+
+    svg {
+      font-size: 1.25rem;
+    }
+  }
+}
