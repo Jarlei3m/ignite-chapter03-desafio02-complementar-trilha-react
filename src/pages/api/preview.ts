@@ -2,8 +2,8 @@ import Prismic from '@prismicio/client';
 // import { linkResolver } from 'path/to/linkResolver';
 import { Document } from '@prismicio/client/types/documents';
 
-const apiEndpoint = 'https://your-repo-name.cdn.prismic.io/api/v2';
-const accessToken = '';
+const apiEndpoint = process.env.PRISMIC_API_ENDPOINT;
+const accessToken = process.env.PRISMIC_ACCESS_TOKEN;
 
 function linkResolver(doc: Document): string {
   if (doc.type === 'posts') {

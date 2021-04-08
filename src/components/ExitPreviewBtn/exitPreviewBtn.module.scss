@@ -1,0 +1,49 @@
+// .btnContainer {
+//   width: 100%;
+//   text-align: center;
+//   height: 3.6rem;
+
+//   background: var(--gray-100);
+//   color: var(--gray-500);
+
+//   border-radius: 4px;
+
+//   font-size: 1.125rem;
+//   font-weight: 600;
+//   line-height: 1.4rem;
+// }
+
+.btnContainer {
+  width: 100%;
+  height: 3.6rem;
+
+  border-radius: 4px;
+  background: var(--gray-100);
+
+  margin-bottom: 6rem;
+  transition: all 0.2s ease-in-out;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    color: var(--gray-500);
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.4rem;
+
+    transition: color 0.2s ease-in-out;
+  }
+
+  &:hover {
+    background: var(--pink-500);
+
+    a {
+      color: var(--gray-100);
+    }
+  }
+}

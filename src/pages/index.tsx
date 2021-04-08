@@ -11,6 +11,7 @@ import { getPrismicClient } from '../services/prismic';
 
 import commonStyles from '../styles/common.module.scss';
 import styles from './home.module.scss';
+import ExitPreviewBtn from '../components/ExitPreviewBtn';
 
 interface Post {
   uid?: string;
@@ -119,13 +120,7 @@ export default function Home({
             Carregar mais posts
           </button>
         )}
-        {preview && (
-          <aside>
-            <Link href="/api/exit-preview">
-              <a>Sair do modo Preview</a>
-            </Link>
-          </aside>
-        )}
+        {preview && <ExitPreviewBtn />}
       </main>
     </>
   );

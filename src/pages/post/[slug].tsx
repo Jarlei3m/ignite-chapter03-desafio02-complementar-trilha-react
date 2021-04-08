@@ -13,6 +13,8 @@ import { getPrismicClient } from '../../services/prismic';
 
 import commonStyles from '../../styles/common.module.scss';
 import styles from './post.module.scss';
+import Comments from '../../components/Comments';
+import ExitPreviewBtn from '../../components/ExitPreviewBtn';
 
 interface Post {
   uid?: string;
@@ -38,14 +40,17 @@ interface PostProps {
   post: Post;
   prevPost?: { url: string | null; title: string | null };
   nextPost?: { url: string | null; title: string | null };
+  preview: boolean;
 }
 
 export default function Post({
   prevPost,
   nextPost,
   post,
+  preview,
 }: PostProps): JSX.Element {
   const router = useRouter();
+
   if (router.isFallback) {
     return <h1>Carregando...</h1>;
   }
@@ -119,7 +124,7 @@ export default function Post({
       </main>
 
       <section className={styles.commentSession}>
-        <div />
+        <hr />
         <header>
           {prevPost.url && (
             <Link href={`/post/${prevPost.url}`}>
@@ -138,6 +143,8 @@ export default function Post({
             </Link>
           )}
         </header>
+        <Comments />
+        {preview && <ExitPreviewBtn />}
       </section>
     </>
   );
@@ -160,8 +167,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: true };
 };
 
-export const getStaticProps: GetStaticProps = async context => {
-  const { slug } = context.params;
+export const getStaticProps: GetStaticProps<PostProps> = async ({
+  params,
+  preview = false,
+  previewData,
+}) => {
+  const { slug } = params;
 
   const prismic = getPrismicClient();
 
@@ -169,6 +180,7 @@ export const getStaticProps: GetStaticProps = async context => {
     [Prismic.predicates.at('document.type', 'posts')],
     {
       fetch: ['posts.title', 'posts.subtitle', 'posts.author', 'posts.content'],
+      ref: previewData?.ref ?? null,
     }
   );
 
@@ -190,8 +202,6 @@ export const getStaticProps: GetStaticProps = async context => {
 
   const filteredPosts = besidePosts.filter(post => post !== null);
   const { prevPost, nextPost } = filteredPosts[0];
-
-  console.log(filteredPosts[0]);
 
   const response = await prismic.getByUID('posts', String(slug), {});
 
@@ -221,6 +231,7 @@ export const getStaticProps: GetStaticProps = async context => {
       post,
       prevPost,
       nextPost,
+      preview,
     },
     revalidate: 60 * 60 * 24, // 24 hour
   };
